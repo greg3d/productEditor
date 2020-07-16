@@ -3,7 +3,7 @@
     'use scrict';
 
     angular
-        .module('obm.intouch', [])
+        .module('manager.intouch', [])
         .config(configIntouch)
 
         .service('IntServ', IntouchServer)
