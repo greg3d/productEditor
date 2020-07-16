@@ -93,8 +93,8 @@ class productEditorHomeManagerController extends modExtraManagerController
      */
     public function getTemplateFile()
     {
-        //$this->content .= '<div id="producteditor-panel-home-div"></div>';
+        $this->content .= '<div id="producteditor-panel-home-div">ddd</div>';
 
-        return 'home.tpl';
+        return '';
     }
 }
