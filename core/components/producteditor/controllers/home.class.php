@@ -20,6 +20,9 @@ class productEditorHomeManagerController extends modExtraManagerController
     public function initialize()
     {
         $this->productEditor = $this->modx->getService('productEditor', 'productEditor', MODX_CORE_PATH . 'components/producteditor/model/');
+        $this->productEditor->config['jsUrl'] = '/productEditor/assets/components/producteditor/js/';
+        $this->productEditor->config['cssUrl'] = '/productEditor/assets/components/producteditor/css/';
+        $this->productEditor->config['viewsUrl'] = MODX_BASE_PATH . '/productEditor/assets/components/producteditor/views/';
         parent::initialize();
     }
 
@@ -56,35 +59,13 @@ class productEditorHomeManagerController extends modExtraManagerController
      */
     public function loadCustomCssJs()
     {
-        //$this->addCss($this->productEditor->config['cssUrl'] . 'mgr/main.css');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/producteditor.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/misc/utils.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/misc/combo.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/widgets/items.grid.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/widgets/items.windows.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/widgets/home.panel.js');
-        //$this->addJavascript($this->productEditor->config['jsUrl'] . 'mgr/sections/home.js');
 
-        /*
-        <script src="runtime.js" defer></script>
-        <script src="polyfills.js" defer></script>
-        <script src="styles.js" defer></script>
-        <script src="vendor.js" defer></script>
-        <script src="main.js" defer></script>
-        */
-
-        $this->addJavascript($this->productEditor->config['jsUrl'] . 'runtime.js');
-        $this->addJavascript($this->productEditor->config['jsUrl'] . 'polyfills.js');
-        $this->addJavascript($this->productEditor->config['jsUrl'] . 'styles.js');
-        $this->addJavascript($this->productEditor->config['jsUrl'] . 'vendor.js');
-        $this->addJavascript($this->productEditor->config['jsUrl'] . 'main.js');
-
-        $this->addHtml('<script type="text/javascript">
-        productEditor.config = ' . json_encode($this->productEditor->config) . ';
-        productEditor.config.connector_url = "' . $this->productEditor->config['connectorUrl'] . '";
+        $this->addJavascript($this->productEditor->config['jsUrl'] . 'libs.js');
+        $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'templates.js');
+        $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'app.js');
         
-        //Ext.onReady(function() {MODx.load({ xtype: "producteditor-page-home"});});
-        </script>');
+
+        //print_r($this->productEditor->config);
     }
 
 
@@ -93,8 +74,8 @@ class productEditorHomeManagerController extends modExtraManagerController
      */
     public function getTemplateFile()
     {
-        $this->content .= '<div id="producteditor-panel-home-div">ddd</div>';
+        //$this->content .= '<div id="producteditor-panel-home-div">ddd</div>';
 
-        return '';
+        return $this->productEditor->config['viewsUrl'] . 'index.html';
     }
 }

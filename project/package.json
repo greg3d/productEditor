@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.26",
     "angular": "^1.7.7",
-    "angular-ui": "^1.0.0",
-    "angular-ui-router": "^1.0.20",
+    "gulp-angular-templatecache": "^3.0.0",
     "ng-annotate": "^1.2.2"
   },
   "devDependencies": {

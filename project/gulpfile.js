@@ -16,12 +16,14 @@ const ngAnnotate = require('gulp-ng-annotate');
 const gulpif = require('gulp-if');
 const minify = require('gulp-clean-css');
 const htmlmin = require('gulp-htmlmin');
+const templateCache = require('gulp-angular-templatecache');
 
 
 var prodMode = false;
 
 const min = ".min";
 var destt = '../assets/components/producteditor/';
+var destviews = destt + '/views/';
 var destcss = destt + '/css/';
 var destjs = destt + '/js/';
 var add = '';
@@ -29,8 +31,8 @@ var add = '';
 function libsjs() {
 
 	return src([
-			'node_modules/angular/angular.min.js',
-			'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+			'node_modules/angular/angular'+ add +'.js',
+			'node_modules/@uirouter/angularjs/release/angular-ui-router' + add + '.js',
 		])
 		.pipe(concat('libs.js'))
 		.pipe(dest(destjs))
@@ -69,13 +71,22 @@ function css() {
 
 function html() {
 	return src([
-			'src/*.html',
-			'src/**/*.html'
+			'src/index.html',
 		])
 		.pipe(htmlmin({
 			collapseWhitespace: true
 		}))
-		.pipe(dest(destt + '/views/'))
+		.pipe(dest(destviews))
+}
+
+function templates() {
+	return src([
+			'src/app/**/*.html'
+		])
+		.pipe(templateCache({
+			standalone: true
+		}))
+		.pipe(dest(destjs))
 }
 
 function production(cb) {
@@ -102,5 +113,5 @@ function prod(cb) {
 	cb();
 }
 
-exports.default = series(libsjs, js, css, html);
-exports.prod = series(production, libsjs, libscss, js, css, html);
+exports.default = series(libsjs, js, css, templates, html);
+exports.prod = series(production, libsjs, libscss, js, css, templates, html);
