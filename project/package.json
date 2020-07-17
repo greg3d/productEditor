@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.26",
-    "angular": "^1.7.7",
+    "angular": "^1.8.0",
     "gulp-angular-templatecache": "^3.0.0",
     "ng-annotate": "^1.2.2"
   },
