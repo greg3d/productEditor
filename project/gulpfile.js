@@ -100,23 +100,13 @@
 
 	function upload(cb) {
 		src([
-			'../assets/**/*.*'	
+			'../assets/**/*.*'
 		]).pipe(sftp({
 			host: '178.79.159.181',
 			port: 22,
 			user: 'biogumus',
 			pass: 'DzJSh0mcZMPe',
-			remotePath: 'www/productEditor/assets'
-		}));
-
-		src([
-			'../core/**/*.*'	
-		]).pipe(sftp({
-			host: '178.79.159.181',
-			port: 22,
-			user: 'biogumus',
-			pass: 'DzJSh0mcZMPe',
-			remotePath: 'www/productEditor/core'
+			remotePath: 'www/assets'
 		}));
 
 		cb();

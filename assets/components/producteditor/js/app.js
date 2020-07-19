@@ -66,14 +66,14 @@
 			name: 'home',
 			url: '/',
 			templateUrl: '/home/index.html'
-		}
+		};
 
 		var aboutState = {
 			name: 'about',
 			url: '/about',
 			template: '<h3>about</h3>'
-		}
-
+		};
+		
 		$stateProvider.state(homeState);
 		$stateProvider.state(aboutState);
 

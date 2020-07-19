@@ -25,7 +25,7 @@ class productEditorHomeManagerController extends modExtraManagerController
         $this->productEditor->config['viewsUrl'] = MODX_BASE_PATH . '/productEditor/assets/components/producteditor/views/';
         parent::initialize();
         echo "<pre>";
-        print_r($this->productEditor->config);
+            print_r($this->productEditor->config);
         echo "</pre>";
     }
 
@@ -62,7 +62,7 @@ class productEditorHomeManagerController extends modExtraManagerController
      */
     public function loadCustomCssJs()
     {
-       // $this->addHtml( '<script src="' . $this->modx->config['assets_url'] . 'components/tag_manager2/tm_config.js.php"  type="text/javascript"></script>' );
+        $this->addHtml( '<script src="' . $this->modx->config['assets_url'] . 'components/producteditor/pe_config.js.php"  type="text/javascript"></script>' );
         $this->addJavascript($this->productEditor->config['jsUrl'] . 'libs.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'templates.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'app.js');
