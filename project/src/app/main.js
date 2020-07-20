@@ -44,19 +44,21 @@
 		return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
 	}];
 
-	var app = angular
+	angular
 		.module('manager', [
 			'ui.router',
+			'home',
 			'templates'
 		])
 		.config(configManager)
 		.run(runManager)
 		.controller('MainCtrl', MainController)
-		.filter('renderFieldValue', RenderFieldValueFunction);
+		.filter('renderFieldValue', RenderFieldValueFunction)
+		.service('Config', ConfigService);
 
-	app.conf = {
-		connector_url: pe_config.assets_url + 'components/producteditor/connector.php',
-	};
+	function ConfigService() {
+		this.connector_url = pe_config.assets_url + 'components/producteditor/connector.php';
+	}
 
 	function RenderFieldValueFunction() {
 
@@ -72,25 +74,7 @@
 
 	function MainController() {
 		
-		var params = {
-            HTTP_MODAUTH: pe_config.auth_token,
-            action: 'mgr/getSettings'
-        };
-        
-        $rootScope.startSpin();
-        
-        $http.post( app.conf.connector_url, params)
-        .success(function (response) {
-            
-            if ( !!response && !!response.object ) {
-                
-                $scope.settings = angular.copy( response.object );
-                
-            }
-            
-            $rootScope.stopSpin();
-            
-        });
+		
 
 
 	}
@@ -99,7 +83,9 @@
 		var homeState = {
 			name: 'home',
 			url: '/',
-			templateUrl: '/home/index.html'
+			templateUrl: '/home/index.html',
+			controller: 'HomeCtrl',
+			controllerAs: 'hc'
 		};
 
 		var aboutState = {

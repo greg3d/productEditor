@@ -45,27 +45,48 @@
 		return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
 	}];
 
-	var app = angular
+	angular
 		.module('manager', [
 			'ui.router',
+			'home',
 			'templates'
 		])
 		.config(configManager)
 		.run(runManager)
-		.controller('MainCtrl', MainController);
+		.controller('MainCtrl', MainController)
+		.filter('renderFieldValue', RenderFieldValueFunction)
+		.service('Config', ConfigService);
 
-	
+	function ConfigService() {
+		this.connector_url = pe_config.assets_url + 'components/producteditor/connector.php';
+	}
+
+	function RenderFieldValueFunction() {
+
+		return function( input ) {
+
+		//console.log( app );
+
+			return input;
+
+		};
+	}
 
 
 	function MainController() {
-		console.log("f");
+		
+		
+
+
 	}
 
 	function configManager($stateProvider, $urlRouterProvider, $httpProvider) {
 		var homeState = {
 			name: 'home',
 			url: '/',
-			templateUrl: '/home/index.html'
+			templateUrl: '/home/index.html',
+			controller: 'HomeCtrl',
+			controllerAs: 'hc'
 		};
 
 		var aboutState = {
@@ -87,5 +108,50 @@
 	function runManager() {
 
 	}
+
+})();
+(function () {
+    'use scrict';
+
+    HomeController.$inject = ["$scope", "$http", "$rootScope", "Config"];
+    angular
+        .module('home', ['ui.router'])
+        .controller('HomeCtrl', HomeController)
+        .config(HomeConfig);
+    
+    function HomeController($scope, $http, $rootScope, Config) {
+
+        $scope.result = " res ";
+        $scope.products = [];
+        $scope.count = 0;
+        $scope.getList = function(){
+            
+
+
+            var params = {
+                HTTP_MODAUTH: pe_config.auth_token,
+                action: 'mgr/item/getproductslist',
+            };
+
+            //$rootScope.startSpin();
+
+            var request = $http.post(Config.connector_url, params);
+            request.then(
+                function(response){
+                    $scope.count = response.data.total;
+                    $scope.products = response.data.object;
+                    $scope.result = response;
+                },
+                function(response){
+                    $scope.result = response;
+                });
+        };
+
+    }
+
+    function HomeConfig(){
+    }
+
+
 
 })();

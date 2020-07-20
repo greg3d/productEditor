@@ -20,13 +20,10 @@ class productEditorHomeManagerController extends modExtraManagerController
     public function initialize()
     {
         $this->productEditor = $this->modx->getService('productEditor', 'productEditor', MODX_CORE_PATH . 'components/producteditor/model/');
-        $this->productEditor->config['jsUrl'] = '/productEditor/assets/components/producteditor/js/';
-        $this->productEditor->config['cssUrl'] = '/productEditor/assets/components/producteditor/css/';
-        $this->productEditor->config['viewsUrl'] = MODX_BASE_PATH . '/productEditor/assets/components/producteditor/views/';
+        $this->productEditor->config['jsUrl'] = '/assets/components/producteditor/js/';
+        $this->productEditor->config['cssUrl'] = '/assets/components/producteditor/css/';
+        $this->productEditor->config['viewsUrl'] = MODX_BASE_PATH . '/assets/components/producteditor/views/';
         parent::initialize();
-        echo "<pre>";
-            print_r($this->productEditor->config);
-        echo "</pre>";
     }
 
 
@@ -62,7 +59,10 @@ class productEditorHomeManagerController extends modExtraManagerController
      */
     public function loadCustomCssJs()
     {
+        $this->addHtml( '<link  href="' . $this->modx->config['assets_url'] . 'components/producteditor/css/app.css"   rel="stylesheet" />' );
+
         $this->addHtml( '<script src="' . $this->modx->config['assets_url'] . 'components/producteditor/pe_config.js.php"  type="text/javascript"></script>' );
+
         $this->addJavascript($this->productEditor->config['jsUrl'] . 'libs.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'templates.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'app.js');

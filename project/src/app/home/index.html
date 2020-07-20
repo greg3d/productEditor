@@ -1,4 +1,26 @@
 
-<div class="row">
-	<h2>fdf22</h2>
+<div ng-controller="HomeCtrl">
+	<a href="#" ng-click="getList()">get list</a>
+
+	<p>{{ count }}</p>
+	<table class="table is-striped is-narrow">
+		<tr ng-repeat="product in products">
+			<td>{{product.id}}</td>
+			<td>{{product.pagetitle}}</td>
+			<td>{{product.longtitle}}</td>
+			<td>{{product.introtext}}</td>
+			<td>{{product.price}}</td>
+			<td>{{product.price2}}</td>
+			<td>{{product.inventory}}</td>
+			<td>{{product.weight}}</td>
+		</tr>
+	</table>
+
+
+	<div class="console">
+		<pre>
+			{{ result | json }}
+		</pre>
+		
+	</div>
 </div>

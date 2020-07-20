@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="producteditor" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="producteditor"
        version="1.1">
-	<object class="ShopContent" table="shop_content" extends="xPDOSimpleObject">
+	<object class="Product" table="shop_content" extends="xPDOSimpleObject">
 		<field key="resource_id" dbtype="int" precision="10" phptype="integer" null="false" index="index" />
 		<field key="pagetitle" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index" />
 		<field key="longtitle" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index" />

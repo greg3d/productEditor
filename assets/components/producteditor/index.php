@@ -27,7 +27,7 @@ $templates = array( 'home' );
 
 //$modx->smarty->assign('var', $results);
 $modx->smarty->caching = false;
-$assets = '/assets/';
+$assets = $modx->config['assets_url'];
 $modx->smarty->template_dir = '/var/www/biogumus/www/assets/components/producteditor/views/';
 $template_name = isset($_GET['a']) && in_array( $_GET['a'], $templates ) ? $_GET['a'] : 'index';
 
@@ -40,8 +40,7 @@ $template_name = isset($_GET['a']) && in_array( $_GET['a'], $templates ) ? $_GET
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>productEditor</title>
    
-    
-    <!-- tagManager config -->
+    <link  href="<?php echo $assets; ?>components/producteditor/css/app.css" rel="stylesheet" />
     <script src="<?php echo $assets; ?>components/producteditor/pe_config.js.php?wctx=mgr"></script>
     <script src="<?php echo $assets; ?>components/producteditor/js/libs.js"></script>
     <script src="<?php echo $assets; ?>components/producteditor/js/templates.js"></script>
@@ -53,7 +52,7 @@ $template_name = isset($_GET['a']) && in_array( $_GET['a'], $templates ) ? $_GET
     <div id="modx-content">
         
     <?php
-        print_r($modx->smarty->template_dir);
+        //print_r($modx->smarty->template_dir);
 
         $modx->smarty->display( 'index.html' );
     

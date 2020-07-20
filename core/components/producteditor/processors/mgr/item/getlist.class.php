@@ -1,9 +1,9 @@
 <?php
 
-class productEditorItemGetListProcessor extends modObjectGetListProcessor
+class productEditorGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'productEditorItem';
-    public $classKey = 'productEditorItem';
+    public $objectType = 'modResource';
+    public $classKey = 'Product';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
@@ -103,4 +103,4 @@ class productEditorItemGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'productEditorItemGetListProcessor';
+return 'productEditorGetListProcessor';
