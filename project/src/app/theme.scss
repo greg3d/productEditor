@@ -3,10 +3,18 @@
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
-// Update Bulma's global variables
+
+// global variables
 $family-sans-serif: "Nunito", sans-serif;
+$fa-font-path: 'fonts/webfonts';
 
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox";
 @import "../../node_modules/@creativebulma/bulma-badge/dist/bulma-badge";
+@import "../../node_modules/angular-ui-grid/ui-grid";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
+
+$fa-font-path: 'fonts/webfonts';

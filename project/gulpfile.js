@@ -30,11 +30,15 @@
 	var destjs = destt + '/js/';
 	var add = '';
 
+	
+
 	function libsjs() {
 
 		return src([
 				'node_modules/angular/angular' + add + '.js',
 				'node_modules/@uirouter/angularjs/release/angular-ui-router' + add + '.js',
+				'node_modules/angular-ui-grid/ui-grid.core.min.js',
+				'node_modules/angular-ui-grid/ui-grid.edit.min.js'
 			])
 			.pipe(concat('libs.js'))
 			.pipe(dest(destjs));
@@ -42,10 +46,9 @@
 
 	function libscss() {
 		return src([
-
+				'src/fonts/**/*.*'
 			])
-			.pipe(concat('libs.css'))
-			.pipe(dest(destcss));
+			.pipe(dest(destcss + 'fonts'));
 	}
 
 	function js() {
@@ -119,7 +122,7 @@
 	//exports.css = css;
 	//exports.html = html;
 
-	var maintask = series(libsjs, js, css, templates, html);
+	var maintask = series(libsjs, js, css, libscss, templates, html);
 	
 	exports.default = maintask;
 	exports.prod = series(production, libsjs, libscss, js, css, templates, html);
