@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
@@ -7481,3 +7482,422 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
+/*!
+   cool-checkboxes-for-bulma.io v1.0.0: Cool Checkboxes for Bulma.io
+   (c) 2017 
+   MIT License
+   
+*/
+.b-checkbox {
+  position: relative; }
+
+.b-checkbox label {
+  padding-left: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1; }
+
+.b-checkbox label::before {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  top: 1px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: background .1s ease-in-out; }
+
+.b-checkbox label::after {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 3px;
+  font-size: 12px;
+  color: #363636; }
+
+.b-checkbox input[type="checkbox"],
+.b-checkbox input[type="radio"] {
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer; }
+
+.b-checkbox input[type="checkbox"]:focus + label::before,
+.b-checkbox input[type="radio"]:focus + label::before {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; }
+
+.b-checkbox input[type="checkbox"]:checked + label::after,
+.b-checkbox input[type="radio"]:checked + label::after {
+  font-family: "FontAwesome";
+  content: ""; }
+
+.b-checkbox input[type="checkbox"]:disabled,
+.b-checkbox input[type="radio"]:disabled {
+  cursor: not-allowed; }
+
+.b-checkbox input[type="checkbox"]:disabled + label,
+.b-checkbox input[type="radio"]:disabled + label {
+  opacity: 0.65; }
+
+.b-checkbox input[type="checkbox"]:disabled + label::before,
+.b-checkbox input[type="radio"]:disabled + label::before {
+  background-color: whitesmoke;
+  cursor: not-allowed; }
+
+.b-checkbox.is-circular label::before {
+  border-radius: 50%; }
+
+.b-checkbox.is-inline {
+  display: inline-block;
+  font-weight: normal; }
+
+.b-checkbox.is-inline + .is-inline {
+  margin-left: 10px; }
+
+.is-primary input[type="checkbox"]:checked + label::before {
+  background-color: #00d1b2;
+  border-color: #00d1b2; }
+
+.is-primary input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-danger input[type="checkbox"]:checked + label::before {
+  background-color: #ff3860;
+  border-color: #ff3860; }
+
+.is-danger input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-info input[type="checkbox"]:checked + label::before {
+  background-color: #3273dc;
+  border-color: #3273dc; }
+
+.is-info input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-warning input[type="checkbox"]:checked + label::before {
+  background-color: #ffdd57;
+  border-color: #ffdd57; }
+
+.is-warning input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-success input[type="checkbox"]:checked + label::before {
+  background-color: #23d160;
+  border-color: #23d160; }
+
+.is-success input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-dark input[type="checkbox"]:checked + label::before {
+  background-color: #363636;
+  border-color: #363636; }
+
+.is-dark input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+.is-black input[type="checkbox"]:checked + label::before {
+  background-color: #0a0a0a;
+  border-color: #0a0a0a; }
+
+.is-black input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+
+input[type="checkbox"].styled:checked + label:after {
+  font-family: "FontAwesome";
+  content: ""; }
+
+input[type="checkbox"] .styled:checked + label::before {
+  color: #fff; }
+
+input[type="checkbox"] .styled:checked + label::after {
+  color: #fff; }
+
+/*! @creativebulma/bulma-badge v1.0.1 | (c) 2020 Gaetan | MIT License | https://github.com/CreativeBulma/bulma-badge */
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+
+/* line 72, src/sass/app.sass */
+.badge {
+  background-color: #00d1b2;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px white;
+  color: white;
+  font-size: 0.65rem;
+  height: 14px;
+  line-height: calc(7px + 1px);
+  min-width: 14px;
+  overflow: hidden;
+  padding: 0.05rem 0.15rem;
+  position: absolute;
+  right: 0;
+  text-overflow: ellipsis;
+  top: 0;
+  transform: translate(50%, -50%);
+  white-space: nowrap; }
+
+/* line 91, src/sass/app.sass */
+.badge.is-outlined {
+  background-color: white;
+  border-color: #00d1b2;
+  color: #00d1b2; }
+
+/* line 16, src/sass/app.sass */
+.badge.is-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+/* line 23, src/sass/app.sass */
+.badge.is-right {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%); }
+
+/* line 30, src/sass/app.sass */
+.badge.is-top {
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  top: 0;
+  transform: translate(-50%, -50%); }
+
+/* line 37, src/sass/app.sass */
+.badge.is-top-left {
+  bottom: auto;
+  left: 0;
+  right: auto;
+  top: 0;
+  transform: translate(-50%, -50%); }
+
+/* line 44, src/sass/app.sass */
+.badge.is-top-right {
+  bottom: auto;
+  left: auto;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%); }
+
+/* line 51, src/sass/app.sass */
+.badge.is-bottom {
+  bottom: 0;
+  left: 50%;
+  right: auto;
+  top: auto;
+  transform: translate(-50%, 50%); }
+
+/* line 58, src/sass/app.sass */
+.badge.is-bottom-left {
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: auto;
+  transform: translate(-50%, 50%); }
+
+/* line 65, src/sass/app.sass */
+.badge.is-bottom-right {
+  bottom: 0;
+  left: auto;
+  right: 0;
+  top: auto;
+  transform: translate(50%, 50%); }
+
+/* line 103, src/sass/app.sass */
+.badge.is-white:not(.is-outlined) {
+  background-color: white;
+  color: #0a0a0a; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-white.is-outlined {
+  border-color: white;
+  color: white; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-black:not(.is-outlined) {
+  background-color: #0a0a0a;
+  color: white; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-black.is-outlined {
+  border-color: #0a0a0a;
+  color: #0a0a0a; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-light:not(.is-outlined) {
+  background-color: whitesmoke;
+  color: rgba(0, 0, 0, 0.7); }
+
+/* line 107, src/sass/app.sass */
+.badge.is-light.is-outlined {
+  border-color: whitesmoke;
+  color: whitesmoke; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-dark:not(.is-outlined) {
+  background-color: #363636;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-dark.is-outlined {
+  border-color: #363636;
+  color: #363636; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-primary:not(.is-outlined) {
+  background-color: #00d1b2;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-primary.is-outlined {
+  border-color: #00d1b2;
+  color: #00d1b2; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-primary.is-light {
+  color: #00947e; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-primary.is-light:not(.is-outlined) {
+  background-color: #ebfffc; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-primary.is-light.is-outlined {
+  border-color: #00d1b2; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-link:not(.is-outlined) {
+  background-color: #3273dc;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-link.is-outlined {
+  border-color: #3273dc;
+  color: #3273dc; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-link.is-light {
+  color: #2160c4; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-link.is-light:not(.is-outlined) {
+  background-color: #eef3fc; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-link.is-light.is-outlined {
+  border-color: #3273dc; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-info:not(.is-outlined) {
+  background-color: #3298dc;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-info.is-outlined {
+  border-color: #3298dc;
+  color: #3298dc; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-info.is-light {
+  color: #1d72aa; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-info.is-light:not(.is-outlined) {
+  background-color: #eef6fc; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-info.is-light.is-outlined {
+  border-color: #3298dc; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-success:not(.is-outlined) {
+  background-color: #48c774;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-success.is-outlined {
+  border-color: #48c774;
+  color: #48c774; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-success.is-light {
+  color: #257942; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-success.is-light:not(.is-outlined) {
+  background-color: #effaf3; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-success.is-light.is-outlined {
+  border-color: #48c774; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-warning:not(.is-outlined) {
+  background-color: #ffdd57;
+  color: rgba(0, 0, 0, 0.7); }
+
+/* line 107, src/sass/app.sass */
+.badge.is-warning.is-outlined {
+  border-color: #ffdd57;
+  color: #ffdd57; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-warning.is-light {
+  color: #947600; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-warning.is-light:not(.is-outlined) {
+  background-color: #fffbeb; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-warning.is-light.is-outlined {
+  border-color: #ffdd57; }
+
+/* line 103, src/sass/app.sass */
+.badge.is-danger:not(.is-outlined) {
+  background-color: #f14668;
+  color: #fff; }
+
+/* line 107, src/sass/app.sass */
+.badge.is-danger.is-outlined {
+  border-color: #f14668;
+  color: #f14668; }
+
+/* line 115, src/sass/app.sass */
+.badge.is-danger.is-light {
+  color: #cc0f35; }
+
+/* line 117, src/sass/app.sass */
+.badge.is-danger.is-light:not(.is-outlined) {
+  background-color: #feecf0; }
+
+/* line 119, src/sass/app.sass */
+.badge.is-danger.is-light.is-outlined {
+  border-color: #f14668; }
+
+/* line 124, src/sass/app.sass */
+.tabs li {
+  position: relative; }
+
+.product-list {
+  font-size: 12px; }
+
+.button-col {
+  min-width: 190px; }

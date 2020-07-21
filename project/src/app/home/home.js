@@ -13,8 +13,6 @@
         $scope.count = 0;
         $scope.getList = function(){
             
-
-
             var params = {
                 HTTP_MODAUTH: pe_config.auth_token,
                 action: 'mgr/item/getproductslist',

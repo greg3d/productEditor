@@ -60,9 +60,7 @@ class productEditorHomeManagerController extends modExtraManagerController
     public function loadCustomCssJs()
     {
         $this->addHtml( '<link  href="' . $this->modx->config['assets_url'] . 'components/producteditor/css/app.css"   rel="stylesheet" />' );
-
         $this->addHtml( '<script src="' . $this->modx->config['assets_url'] . 'components/producteditor/pe_config.js.php"  type="text/javascript"></script>' );
-
         $this->addJavascript($this->productEditor->config['jsUrl'] . 'libs.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'templates.js');
         $this->addLastJavascript($this->productEditor->config['jsUrl'] . 'app.js');

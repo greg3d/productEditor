@@ -6,6 +6,7 @@
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 
-
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/bulma.sass";
+@import "../../node_modules/cool-checkboxes-for-bulma.io/dist/css/bulma-radio-checkbox";
+@import "../../node_modules/@creativebulma/bulma-badge/dist/bulma-badge";
