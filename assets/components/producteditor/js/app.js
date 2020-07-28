@@ -1,5 +1,5 @@
 (function () {
-	'use scrict';
+	'use strict';
 
 	// Override $http service's default transformRequest
 	configManager.$inject = ["$stateProvider", "$urlRouterProvider", "$httpProvider"];
@@ -111,7 +111,7 @@
 
 })();
 (function () {
-    'use scrict';
+    'use strict';
 
     HomeController.$inject = ["$scope", "$http", "$rootScope", "Config"];
     angular
