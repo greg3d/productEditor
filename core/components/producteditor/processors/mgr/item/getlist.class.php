@@ -3,7 +3,7 @@
 class productEditorGetListProcessor extends modObjectGetListProcessor
 {
     public $objectType = 'modResource';
-    public $classKey = 'Product';
+    public $classKey = 'ShopContent';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';

@@ -78,13 +78,18 @@
                     cellFilter: 'number'
                 },
                 {
-                    name: 'Цена Самара',
+                    name: 'Цена Регионы',
                     field: 'price',
                     cellFilter: 'number'
                 },
                 {
-                    name: 'Цена города',
-                    field: 'price2',
+                    name: 'Цена Самара',
+                    field: 'price_action',
+                    cellFilter: 'number'
+                },
+                {
+                    name: 'Цена Сибирь',
+                    field: 'price_dv',
                     cellFilter: 'number'
                 },
                 {
