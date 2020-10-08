@@ -5,42 +5,12 @@
 
 	<div ui-grid="hc.gridOptions" ui-grid-edit class="myGrid"></div>
 
-	<!-- <table class="table is-striped is-narrow product-list">
-		<thead>
-			<tr>
-				<td>ID</td>
-				<td>Pagetitle</td>
-				<td>Longtitle</td>
-				<td>Аннотация</td>
-				<td>Цена для Самары</td>
-				<td>Цена для Городов</td>
-				<td>Объем, л</td>
-				<td>Вес, кг</td>
-				<td class="button-col"></td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="product in products">
-				<td>{{product.id}}</td>
-				<td>{{product.pagetitle}}</td>
-				<td>{{product.longtitle}}</td>
-				<td>{{product.introtext}}</td>
-				<td>{{product.price}}</td>
-				<td>{{product.price2}}</td>
-				<td>{{product.inventory}}</td>
-				<td>{{product.weight}}</td>
-				<td>
-					<div class="buttons has-addons is-centered">
-						<b7utton class="button is-primary">Edit</button>
-						<button class="button is-danger">Delete</button>
-					</div>
-					
-				</td>
-			</tr>
-		</tbody>
+	<div class="console">
+		<pre>
+			{{ hc.msg | json }}
+		</pre>
 		
-	</table> -->
-
+	</div>
 
 	<div class="console">
 		<pre>

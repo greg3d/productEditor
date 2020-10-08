@@ -18,3 +18,9 @@ $fa-font-path: 'fonts/webfonts';
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 $fa-font-path: 'fonts/webfonts';
+
+
+#modx-content {
+    height: 100%;
+    overflow: scroll;
+}

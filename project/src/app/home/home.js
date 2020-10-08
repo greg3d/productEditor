@@ -67,7 +67,7 @@
                     name: 'Тип',
                     field: 'type',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
-                    
+
                     editDropdownValueLabel: 'type',
                     editDropdownOptionsArray: types,
                     //cellFilter: 'mapTypes'
@@ -108,6 +108,18 @@
                 },
             ],
             data: 'hc.products'
+        };
+
+        hc.msg = {};
+
+        hc.gridOptions.onRegisterApi = function (gridApi) {
+            //set gridApi on scope
+            hc.gridApi = gridApi;
+
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
+                hc.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue;
+                $scope.$apply();
+            });
         };
 
         var getList = function () {

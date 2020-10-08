@@ -53,7 +53,7 @@ $template_name = isset($_GET['a']) && in_array( $_GET['a'], $templates ) ? $_GET
         
     <?php
         //print_r($modx->smarty->template_dir);
-
+echo "f";
         $modx->smarty->display( 'index.html' );
     
     ?>
