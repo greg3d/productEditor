@@ -14,8 +14,8 @@ class productEditorItemGetListProcessor extends modObjectGetListProcessor {
 
     public function process() {
         
-        $modelpath = $this->modx->getOption('core_path') . 'components/producteditor/model/';
-        $this->modx->addPackage( 'producteditor', $modelpath );
+        $modelpath = $this->modx->getOption('core_path') . 'components/shop/model/';
+        $this->modx->addPackage( 'shop', $modelpath );
         
         $scriptProperties = $this->getProperties();
         $filters = $this->modx->getOption( 'filters', $scriptProperties, array() );
@@ -25,13 +25,13 @@ class productEditorItemGetListProcessor extends modObjectGetListProcessor {
         $sorting = $this->modx->getOption( 'sorting', $scriptProperties, array( 'id' => 'desc' ) );
         $date_format = $this->modx->getOption( 'date_format', $scriptProperties, 'd.m.Y H:i:s' );
         
-        $table_fields = array_keys( $this->modx->getFields('Product') );
+        $table_fields = array_keys( $this->modx->getFields('ShopContent') );
         
         //sorting
         //$opt_sortby = '`id`';
         //$opt_sortdir = 'desc';
         
-        $total = $this->modx->getCount('Product');
+        $total = $this->modx->getCount('ShopContent'); // class
         
         if( $offset === false ){
             $offset = $limit * ( $page - 1 );
@@ -39,12 +39,12 @@ class productEditorItemGetListProcessor extends modObjectGetListProcessor {
         
 
         $list = array();
-        $query = $this->modx->newQuery( 'Product' );
+        $query = $this->modx->newQuery( 'ShopContent' ); // class
         $query->sortby( 'id', 'ASC' );
         $query->limit( $limit, $offset );
         //$query->select( '(SELECT COUNT(*) FROM ' . $this->modx->getTableName('shop_content') . ' WHERE ' . $this->modx->getTableName('shop_content') . '.`order_id` = `shk_order`.`id`) AS `count_total`' );
         
-        $products = $this->modx->getIterator( 'Product', $query );
+        $products = $this->modx->getIterator( 'ShopContent', $query );
         
         if( $products ){
             
@@ -70,7 +70,8 @@ class productEditorItemGetListProcessor extends modObjectGetListProcessor {
                     'articul' => '',
                     'tags' => '',
                     'price' => '',
-                    'price2' => '',
+                    'price_action' => '',
+                    'price_dv' => '',
                     'sort_order_custom' => ''
                 );
 

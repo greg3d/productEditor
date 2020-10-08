@@ -1,5 +1,5 @@
 (function () {
-	'use scrict';
+	'use strict';
 
 	// Override $http service's default transformRequest
 	var ng_transformRequest = [function (data) {
