@@ -38,7 +38,9 @@
 				'node_modules/angular/angular' + add + '.js',
 				'node_modules/@uirouter/angularjs/release/angular-ui-router' + add + '.js',
 				'node_modules/angular-ui-grid/ui-grid.core.min.js',
-				'node_modules/angular-ui-grid/ui-grid.edit.min.js'
+				'node_modules/angular-ui-grid/ui-grid.edit.min.js',
+				'node_modules/angular-ui-grid/ui-grid.cellnav.min.js',
+				'node_modules/angular-ui-grid/ui-grid.row-edit.min.js',
 			])
 			.pipe(concat('libs.js'))
 			.pipe(dest(destjs));
