@@ -54,7 +54,31 @@
 		.run(runManager)
 		.controller('MainCtrl', MainController)
 		.filter('renderFieldValue', RenderFieldValueFunction)
-		.service('Config', ConfigService);
+		.service('Config', ConfigService)
+		.service('Server', ServerService)
+
+	function ServerService(Config) {
+		
+		var ss = this;
+		
+		//ss.result = {};
+		//ss.response = {};
+
+		ss.Request = function(action, data) {
+			
+			var params = {
+				HTTP_MODAUTH: pe_config.auth_token,
+				action: action
+			};
+
+			if (data !== null) {
+				params.data = data;
+			}
+
+			return $http.post(Config.connector_url, params);
+
+		}
+	}
 
 	function ConfigService() {
 		this.connector_url = pe_config.assets_url + 'components/producteditor/connector.php';
@@ -62,9 +86,9 @@
 
 	function RenderFieldValueFunction() {
 
-		return function( input ) {
+		return function (input) {
 
-		//console.log( app );
+			//console.log( app );
 
 			return input;
 
@@ -73,8 +97,8 @@
 
 
 	function MainController() {
-		
-		
+
+
 
 
 	}
@@ -93,7 +117,7 @@
 			url: '/about',
 			template: '<h3>about</h3>'
 		};
-		
+
 		$stateProvider.state(homeState);
 		$stateProvider.state(aboutState);
 

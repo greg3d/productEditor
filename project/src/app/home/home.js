@@ -9,7 +9,7 @@
         ])
         .controller('HomeCtrl', HomeController)
         .config(HomeConfig)
-        .filter('mapTypes', mapTypesFilter);
+        .filter('numFormat', numFormatFilter);
 
     function HomeController($scope, $http, $rootScope, Config) {
 
@@ -18,109 +18,6 @@
         hc.products = [];
 
         hc.count = 0;
-
-        var types = [{
-                id: 1,
-                type: 'эко-грунт'
-            },
-            {
-                id: 2,
-                type: 'концентрат'
-            },
-            {
-                id: 3,
-                type: 'жидкий'
-            },
-            {
-                id: 4,
-                type: 'гумат'
-            },
-            {
-                id: 5,
-                type: 'черви'
-            },
-        ];
-
-        hc.gridOptions = {
-            enableSorting: true,
-            columnDefs: [{
-                    name: 'id',
-                    field: 'id',
-                    displayName: '',
-                    enableCellEdit: false,
-                    width: 48,
-                    headerCellTemplate: '/home/headers/id.html',
-                },
-                {
-                    name: 'название',
-                    field: 'pagetitle',
-                },
-                {
-                    name: 'аннотация',
-                    field: 'introtext'
-                },
-                {
-                    name: 'алиас',
-                    field: 'alias'
-                },
-                {
-                    name: 'Тип',
-                    field: 'type',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-
-                    editDropdownValueLabel: 'type',
-                    editDropdownOptionsArray: types,
-                    //cellFilter: 'mapTypes'
-                },
-                {
-                    name: 'сорт',
-                    field: 'sort_order_custom',
-                    cellFilter: 'number'
-                },
-                {
-                    name: 'Цена Регионы',
-                    field: 'price',
-                    cellFilter: 'number'
-                },
-                {
-                    name: 'Цена Самара',
-                    field: 'price_action',
-                    cellFilter: 'number'
-                },
-                {
-                    name: 'Цена Сибирь',
-                    field: 'price_dv',
-                    cellFilter: 'number'
-                },
-                {
-                    name: 'Объем, л',
-                    field: 'inventory',
-                    headerCellTemplate: '/home/headers/volume.html',
-                    width: 48,
-                    cellFilter: 'number'
-                },
-                {
-                    name: 'Вес, кг',
-                    field: 'weight',
-                    headerCellTemplate: '/home/headers/weight.html',
-                    width: 48,
-                    cellFilter: 'number'
-                },
-            ],
-            data: 'hc.products'
-        };
-
-        hc.msg = {};
-
-        hc.gridOptions.onRegisterApi = function (gridApi) {
-            //set gridApi on scope
-            hc.gridApi = gridApi;
-
-            gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-                hc.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue;
-                $scope.$apply();
-            });
-        };
 
         var getList = function () {
 
@@ -143,31 +40,141 @@
                 });
         };
 
+        var updateProduct = function (id, key, value) {
+            var params = {
+                HTTP_MODAUTH: pe_config.auth_token,
+                action: 'mgr/item/update',
+                id: id,
+                key: key,
+                value: value
+            };
+
+            var request = $http.post(Config.connector_url, params);
+            request.then(
+                function (response) {
+                    hc.msg.updateResponse = response;
+                },
+                function (response) {
+                    hc.msg.updateResponse = response;
+                });
+
+        }
+
+        var types = [{
+            id: 'эко-грунт'
+        },
+        {
+            id: 'концентрат'
+        },
+        {
+            id: 'жидкий'
+        },
+        {
+            id: 'гумат'
+        },
+        {
+            id: 'черви'
+        },
+        ];
+
+        hc.gridOptions = {
+            enableSorting: true,
+            columnDefs: [{
+                name: 'id',
+                field: 'id',
+                displayName: '',
+                enableCellEdit: false,
+                width: 48,
+                headerCellTemplate: '/home/headers/id.html',
+            },
+            {
+                name: 'название',
+                field: 'pagetitle',
+            },
+            {
+                name: 'аннотация',
+                field: 'introtext'
+            },
+            {
+                name: 'алиас',
+                field: 'alias'
+            },
+            {
+                name: 'Тип',
+                field: 'type',
+                editableCellTemplate: 'ui-grid/dropdownEditor',
+
+                editDropdownValueLabel: 'id',
+                editDropdownOptionsArray: types,
+                //cellFilter: 'mapTypes'
+            },
+            {
+                name: 'сорт',
+                field: 'sort_order_custom',
+                cellFilter: 'number'
+            },
+            {
+                name: 'Цена Регионы',
+                field: 'price',
+                cellFilter: 'numFormat'
+            },
+            {
+                name: 'Цена Самара',
+                field: 'price_action',
+                cellFilter: 'numFormat'
+            },
+            {
+                name: 'Цена Сибирь',
+                field: 'price_dv',
+                cellFilter: 'numFormat'
+            },
+            {
+                name: 'Объем, л',
+                field: 'weight',
+                width: 48,
+                cellFilter: 'numFormat'
+            },
+            {
+                name: 'Вес, кг',
+                field: 'inventory',
+                width: 48,
+                cellFilter: 'numFormat'
+            },
+            ],
+            data: 'hc.products'
+        };
+
+        hc.msg = {};
+
+        hc.gridOptions.onRegisterApi = function (gridApi) {
+            //set gridApi on scope
+            hc.gridApi = gridApi;
+
+            gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
+
+                hc.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue;
+                updateProduct(rowEntity.id, colDef.field, newValue);
+                $scope.$apply();
+            });
+        };
+
+
+
         getList();
 
+
+
     }
 
-    function mapTypesFilter() {
 
-        var genderHash = {
-            1: 'эко-грунт',
-            2: 'концентрат',
-            3: 'жидкий',
-            4: 'гумат',
-            5: 'черви'
-        };
 
+    function numFormatFilter() {
         return function (input) {
-            if (!input) {
-                return '';
-            } else {
-                return genderHash[input];
-            }
-        };
-
+            return new Intl.NumberFormat('ru-RU').format(input);
+        }
     }
 
-    function HomeConfig() {}
+    function HomeConfig() { }
 
 
 

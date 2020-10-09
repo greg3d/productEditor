@@ -1,12 +1,13 @@
 <?php
 
-class productEditorItemUpdateProcessor extends modObjectUpdateProcessor
+class ProductUpdateProcessor extends modObjectUpdateProcessor
 {
-    public $objectType = 'productEditorItem';
-    public $classKey = 'productEditorItem';
+    public $objectType = 'ShopContent';
+    public $classKey = 'ShopContent';
     public $languageTopics = ['producteditor'];
     //public $permission = 'save';
 
+    
 
     /**
      * We doing special check of permission
@@ -24,25 +25,24 @@ class productEditorItemUpdateProcessor extends modObjectUpdateProcessor
     }
 
 
-    /**
-     * @return bool
-     */
-    public function beforeSet()
-    {
-        $id = (int)$this->getProperty('id');
-        $name = trim($this->getProperty('name'));
-        if (empty($id)) {
-            return $this->modx->lexicon('producteditor_item_err_ns');
-        }
+    public function process() {
 
-        if (empty($name)) {
-            $this->modx->error->addField('name', $this->modx->lexicon('producteditor_item_err_name'));
-        } elseif ($this->modx->getCount($this->classKey, ['name' => $name, 'id:!=' => $id])) {
-            $this->modx->error->addField('name', $this->modx->lexicon('producteditor_item_err_ae'));
-        }
+        $scriptProperties = $this->getProperties();
+        $key = $this->modx->getOption('key', $scriptProperties, '');
+        $value = 
+        $success = false;
 
-        return parent::beforeSet();
+
+
+        $output = array(
+            'success' => true,
+            'message' => 'success!',
+            'object' => $this->modx->getOption('key', $scriptProperties, '')
+        );
+        
+        return $output;
     }
+   
 }
 
-return 'productEditorItemUpdateProcessor';
+return 'ProductUpdateProcessor';
