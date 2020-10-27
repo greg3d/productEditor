@@ -1,7 +1,7 @@
 
 <div ng-controller="HomeCtrl as hc">
 
-	<p>Всего продуктов: {{ hc.count }} | <a href="#" ng-click="getList()">get list</a></p>
+	<p>Всего продуктов: {{ hc.count }} | <a href="#" ng-click="getList()">обновить</a> | <a href="#" ng-click="getList()">Добавить товарп</a></p>
 
 	<div ui-grid="hc.gridOptions" ui-grid-edit class="myGrid"></div>
 

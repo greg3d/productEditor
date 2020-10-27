@@ -61,85 +61,80 @@
         }
 
         var types = [{
-            id: 'эко-грунт'
-        },
-        {
-            id: 'концентрат'
-        },
-        {
-            id: 'жидкий'
-        },
-        {
-            id: 'гумат'
-        },
-        {
-            id: 'черви'
-        },
+                id: 'эко-грунт'
+            },
+            {
+                id: 'концентрат'
+            },
+            {
+                id: 'жидкий'
+            },
+            {
+                id: 'гумат'
+            },
+            {
+                id: 'черви'
+            },
         ];
 
         hc.gridOptions = {
             enableSorting: true,
             columnDefs: [{
-                name: 'id',
-                field: 'id',
-                displayName: '',
-                enableCellEdit: false,
-                width: 48,
-                headerCellTemplate: '/home/headers/id.html',
-            },
-            {
-                name: 'название',
-                field: 'pagetitle',
-            },
-            {
-                name: 'аннотация',
-                field: 'introtext'
-            },
-            {
-                name: 'алиас',
-                field: 'alias'
-            },
-            {
-                name: 'Тип',
-                field: 'type',
-                editableCellTemplate: 'ui-grid/dropdownEditor',
-
-                editDropdownValueLabel: 'id',
-                editDropdownOptionsArray: types,
-                //cellFilter: 'mapTypes'
-            },
-            {
-                name: 'сорт',
-                field: 'sort_order_custom',
-                cellFilter: 'number'
-            },
-            {
-                name: 'Цена Регионы',
-                field: 'price',
-                cellFilter: 'numFormat'
-            },
-            {
-                name: 'Цена Самара',
-                field: 'price_action',
-                cellFilter: 'numFormat'
-            },
-            {
-                name: 'Цена Сибирь',
-                field: 'price_dv',
-                cellFilter: 'numFormat'
-            },
-            {
-                name: 'Объем, л',
-                field: 'weight',
-                width: 48,
-                cellFilter: 'numFormat'
-            },
-            {
-                name: 'Вес, кг',
-                field: 'inventory',
-                width: 48,
-                cellFilter: 'numFormat'
-            },
+                    name: 'id',
+                    field: 'id',
+                    displayName: '',
+                    enableCellEdit: false,
+                    width: 40,
+                    headerCellTemplate: '/home/headers/id.html',
+                },
+                {
+                    name: 'название',
+                    field: 'pagetitle',
+                },
+                {
+                    name: 'аннотация',
+                    field: 'introtext'
+                },
+                {
+                    name: 'алиас',
+                    field: 'alias'
+                },
+                {
+                    name: 'Тип',
+                    field: 'type',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownValueLabel: 'id',
+                    editDropdownOptionsArray: types,
+                    //cellFilter: 'mapTypes'
+                },
+                {
+                    name: 'Цена Самара',
+                    field: 'price_action',
+                    cellFilter: 'numFormat'
+                },
+                {
+                    name: 'Цена Регионы',
+                    field: 'price',
+                    cellFilter: 'numFormat'
+                },
+                
+                {
+                    name: 'Цена Сибирь',
+                    field: 'price_dv',
+                    cellFilter: 'numFormat'
+                },
+                {
+                    name: 'Объем, л',
+                    field: 'weight',
+                    width: 64,
+                    cellFilter: 'numFormat'
+                },
+                {
+                    name: 'Вес, кг',
+                    field: 'inventory',
+                    width: 64,
+                    cellFilter: 'numFormat'
+                },
             ],
             data: 'hc.products'
         };
@@ -149,24 +144,15 @@
         hc.gridOptions.onRegisterApi = function (gridApi) {
             //set gridApi on scope
             hc.gridApi = gridApi;
-
             gridApi.edit.on.afterCellEdit($scope, function (rowEntity, colDef, newValue, oldValue) {
-
                 hc.msg.lastCellEdited = 'edited row id:' + rowEntity.id + ' Column:' + colDef.name + ' newValue:' + newValue + ' oldValue:' + oldValue;
                 updateProduct(rowEntity.id, colDef.field, newValue);
                 $scope.$apply();
             });
         };
 
-
-
         getList();
-
-
-
     }
-
-
 
     function numFormatFilter() {
         return function (input) {
@@ -174,8 +160,6 @@
         }
     }
 
-    function HomeConfig() { }
-
-
+    function HomeConfig() {}
 
 })();

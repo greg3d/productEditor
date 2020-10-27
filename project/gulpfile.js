@@ -105,7 +105,9 @@
 
 	function upload(cb) {
 		src([
-			'../assets/**/*.*'
+			'../assets/**/*.css',
+			'../assets/**/*.js',
+			'../assets/**/*.php'
 		]).pipe(sftp({
 			host: '178.79.159.181',
 			port: 22,
@@ -128,6 +130,6 @@
 	
 	exports.default = maintask;
 	exports.prod = series(production, libsjs, libscss, js, css, templates, html);
-	exports.upload = series(maintask, upload);
+	exports.upload = series(production, libsjs, libscss, js, css, templates, html, upload);
 
 })();
